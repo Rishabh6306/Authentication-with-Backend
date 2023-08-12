@@ -1,0 +1,41 @@
+/* Universal Selector  */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+/* Authontication-container which takes components Signup and Login  */
+.auth-container {
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+/* Button which are common in SignUp and Login  */
+.button {
+    background-color: #7b00ff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+}
+
+/* pre text which are common in SignUp and Login  */
+pre {
+    font-size: 17px;
+    margin: 12px 5px;
+}
+
+/* pre anchor tags which are common in SignUp and Login  */
+pre a {
+    text-decoration: none;
+}
+
+pre a:hover {
+    text-decoration: underline;
+}
