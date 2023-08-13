@@ -2,14 +2,15 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { config as configDotenv } from 'dotenv';
+import employeeModel from './models/employee.js'; // Adjust the path and extension as needed
 
 configDotenv();
 
 const app = express();
 app.use(express.json());
-// app.use(cors()); 
 
-app.use(cors({ origin: 'http://localhost:5173' })); 
+// Adjust the CORS configuration to allow connections from localhost:5173
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 const connectToDb = async () => {
     try {
@@ -22,14 +23,14 @@ const connectToDb = async () => {
         console.error('Error connecting to MongoDB:', error.message);
         process.exit(1);
     }
-};
+}
 
 connectToDb();
 
 app.post('/register', (req, res) => {
-    // Handle user registration logic here
-    // For now, let's just send a response
-    res.json({ message: 'User registered successfully' });
+    employeeModel.create(req.body)
+        .then((employee) => res.json(employee))
+        .catch((err) => res.status(500).json({ error: err }));
 });
 
 const PORT = process.env.PORT || 3001;

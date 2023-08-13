@@ -4,7 +4,7 @@ import LoginForm from './Components/Login&SignUp/LoginForm';
 import './App.css';
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <div className='auth-container'>

@@ -1,11 +1,11 @@
-import mongoose, { Mongoose, Schema, mongo } from "mongoose";
+import mongoose from 'mongoose';
 
-const emloyeeSchema = new mongoose.Schema({
+const employeeSchema = new mongoose.Schema({
     name: String,
     email: String,
-    paasword: String
-})
+    password: String 
+});
 
-const emloyeeModel = mongoose.model('employees', emloyeeSchema)
+const employeeModel = mongoose.model('employees', employeeSchema);
 
-export default emloyeeModel;
+export default employeeModel;
