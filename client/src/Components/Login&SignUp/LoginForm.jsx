@@ -41,6 +41,7 @@ function LoginForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required 
         />
         <input
           type="password"
@@ -48,6 +49,7 @@ function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required 
         />
         <input type="submit" className="button" />
         <pre>Create an account! <Link className='btn' to="/SignUp">Sign Up</Link></pre>
