@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { config as configDotenv } from 'dotenv';
-import employeeModel from './models/employee.js'; // Adjust the path and extension as needed
+import employeeModel from './models/employee.js';
 
 configDotenv();
 
@@ -27,34 +27,40 @@ const connectToDb = async () => {
 
 connectToDb();
 
+app.post('/register', async (req, res) => {
+    const { name, email, password } = req.body;
 
+    try {
+        const existingEmployee = await employeeModel.findOne({ email: email });
+        if (existingEmployee) {
+            return res.status(400).json({ error: 'Email is already registered' });
+        }
 
-app.post('/register', (req, res) => {
-    employeeModel.create(req.body)
-        .then((employee) => res.json(employee))
-        .catch((err) => res.status(500).json({ error: err }));
+        const newEmployee = await employeeModel.create({ name, email, password });
+        res.json(newEmployee);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     employeeModel.findOne({ email: email })
         .then(user => {
-            if (user) {
-                    console.log(user.password);
-                if (user.password.trim() === password) {
-                    res.json('Success!');
-                } else {
-                    res.json('Incorrect password');
-                }
-            } else {
+            if (!user) {
                 return res.json('No record existed');
+            }
+
+            if (user.password.trim() === password) {
+                res.json('Success!');
+            } else {
+                res.json('Incorrect password');
             }
         })
         .catch(error => {
             res.status(500).json({ error: error.message });
         });
 });
-
 
 const PORT = process.env.PORT || 3001;
 

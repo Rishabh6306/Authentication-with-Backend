@@ -23,8 +23,12 @@ function SignupForm() {
       console.log('Form submitted successfully:', response.data);
       navigate('/login'); // Redirect to the login page
     } catch (error) {
-      setMessage('An error occurred');
-      console.error(error);
+      if (error.response && error.response.data && error.response.data.error) {
+        setMessage('User already exists'); // Set custom error message
+      } else {
+        setMessage('An error occurred');
+        console.error(error);
+      }
     }
   };
 
