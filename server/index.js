@@ -40,6 +40,7 @@ app.post('/login', (req, res) => {
     employeeModel.findOne({ email: email })
         .then(user => {
             if (user) {
+                    console.log(user.password);
                 if (user.password.trim() === password) {
                     res.json('Success!');
                 } else {

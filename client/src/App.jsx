@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/" element={<SignupForm />} /> {/* Default route */}
-        <Route path="/home" element={<Home />} /> {/* Default route */}
+        <Route path="/" element={<SignupForm />} />
+        <Route path="/home" element={<Home />} /> 
       </Routes>
     </Router>
   );
