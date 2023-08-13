@@ -46,11 +46,11 @@ pre {
 }
 
 /* pre anchor tags which are common in SignUp and Login  */
-pre .btn-toggle {
-    color: blue;
-    border: none;
+pre .btn {
+    color: blueviolet;
+    text-decoration: none;
 }
 
-pre .btn-toggle:hover {
+pre .btn:hover {
     text-decoration: underline;
 }

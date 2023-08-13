@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 
-function SignupForm({ toggleForm }) {
+function SignupForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ function SignupForm({ toggleForm }) {
 
       setMessage('User registered successfully');
       console.log('Form submitted successfully:', response.data);
+      navigate('/login'); // Redirect to the login page
     } catch (error) {
       setMessage('An error occurred');
       console.error(error);
@@ -52,7 +55,7 @@ function SignupForm({ toggleForm }) {
         />
         <input type="submit" className="button" />
         <pre>
-          Have an Account! <button onClick={toggleForm}>Login</button>
+          Have an Account! <Link className='btn' to="/login">Login</Link>
         </pre>
         <p>{message}</p>
       </form>

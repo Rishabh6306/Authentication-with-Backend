@@ -8,7 +8,7 @@
 }
 
 /* Authontication-container which takes components Signup and Login  */
-.auth-container {
+body {
     background-color: azure;
     display: flex;
     align-items: center;
